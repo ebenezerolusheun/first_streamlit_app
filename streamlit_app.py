@@ -15,6 +15,15 @@ streamlit.header('🍌🥭 Build Your Own Fruit Smoothie 🥝🍇')
 ## using pandas to read data from the S3 bucket 
 my_fruits_list = pd.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/dabw/fruit_macros.txt")
 
+## adding slider bar
+slider = my_fruits_list['Fruit'].unique()
+
+start_fruit, end_fruit = st.select_slider(
+    'Select a range of fruits',
+    options=[slider],
+    value=('Banana', 'Apple'))
+streamlit.write('You selected fruits between', start_fruit, 'and', end_fruit)
+
 my_fruit_list = my_fruits_list.set_index('Fruit')
 
 ## Let's put a pick list here so they can pick the fruit they want to include
