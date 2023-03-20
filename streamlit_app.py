@@ -18,7 +18,7 @@ my_fruits_list = pd.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/d
 ## adding slider bar
 slider = my_fruits_list['Fruit'].unique()
 
-start_fruit, end_fruit = st.select_slider(
+start_fruit, end_fruit = streamlit.select_slider(
     'Select a range of fruits',
     options=[slider],
     value=('Banana', 'Apple'))
