@@ -15,5 +15,8 @@ streamlit.header('🍌🥭 Build Your Own Fruit Smoothie 🥝🍇')
 ## using pandas to read data from the S3 bucket 
 my_fruits_list = pd.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/dabw/fruit_macros.txt")
 
+## Let's put a pic list here so they can pic the fruit they want to include
+streamlit.multiselect("Pic some fruits:", list(my_fruit_list.index))
 
+## Display the table on the page
 streamlit.dataframe(my_fruits_list)
