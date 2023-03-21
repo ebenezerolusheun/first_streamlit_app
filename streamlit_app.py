@@ -32,10 +32,11 @@ streamlit.dataframe(fruits_to_show)
 ## New Section to display fruityvice api response
 import requests
 streamlit.header("Fruityvice Fruit Advice!") 
+
 def read_api(value:str):
   return requests.get(f"https://fruityvice.com/api/fruit/{value}")
 
-fruityvice_response = read_api('watermelon')
+fruityvice_response = read_api('kiwi')
 
 ##fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
 
