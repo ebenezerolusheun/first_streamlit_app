@@ -1,18 +1,19 @@
-import streamlit
+import streamlit as st
 import pandas as pd
+import requests as req
 
 
 
 streamlit.title('My Parents New Healthy Diner')
 
-streamlit.header('Breakfast Favorites')
-streamlit.text('🥣 Omega 3  & Blueberry Oatmeal')
-streamlit.text('🥗 Kale, Spinach & Rocket Smoothie')
-streamlit.text('🐔 Hard-Boiled Free-Range Egg')
-streamlit.text('🥑🍞 Avocado Toast')
+st.header('Breakfast Favorites')
+st.text('🥣 Omega 3  & Blueberry Oatmeal')
+st.text('🥗 Kale, Spinach & Rocket Smoothie')
+st.text('🐔 Hard-Boiled Free-Range Egg')
+st.text('🥑🍞 Avocado Toast')
 
 
-streamlit.header('🍌🥭 Build Your Own Fruit Smoothie 🥝🍇')
+st.header('🍌🥭 Build Your Own Fruit Smoothie 🥝🍇')
 
 ## using pandas to read data from the S3 bucket 
 my_fruits_list = pd.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/dabw/fruit_macros.txt")
@@ -27,14 +28,14 @@ fruits_selected = streamlit.multiselect("Pick some fruits:", list(my_fruit_list.
 fruits_to_show = my_fruit_list.loc[fruits_selected]
 
 ## Display the table on the page
-streamlit.dataframe(fruits_to_show)
+st.dataframe(fruits_to_show)
 
 ## New Section to display fruityvice api response
-import requests
-streamlit.header("Fruityvice Fruit Advice!") 
+
+st.header("Fruityvice Fruit Advice!") 
 
 def read_api(value:str):
-  return requests.get(f"https://fruityvice.com/api/fruit/{value}")
+  return req.get(f"https://fruityvice.com/api/fruit/{value}")
 
 fruityvice_response = read_api('kiwi')
 
@@ -47,4 +48,4 @@ fruityvice_response = read_api('kiwi')
 fruityvice_normalized = pd.json_normalize(fruityvice_response.json())
 
 # Let streamlite to display the object as dataframe
-streamlit.dataframe(fruityvice_normalized)
+st.dataframe(fruityvice_normalized)
