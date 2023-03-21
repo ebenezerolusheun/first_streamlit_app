@@ -43,8 +43,8 @@ fruityvice_response = read_api('kiwi')
 
 ##streamlit.text(fruityvice_response.json())
 
-# write your own comment -what does the next line do? 
-fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
+# To Flattening a simple JSON into a dataframe 
+fruityvice_normalized = pd.json_normalize(fruityvice_response.json())
 
-# write your own comment - what does this do?
+# Let streamlite to display the object as dataframe
 streamlit.dataframe(fruityvice_normalized)
