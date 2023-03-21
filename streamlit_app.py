@@ -4,7 +4,7 @@ import requests as req
 
 
 
-streamlit.title('My Parents New Healthy Diner')
+st.title('My Parents New Healthy Diner')
 
 st.header('Breakfast Favorites')
 st.text('🥣 Omega 3  & Blueberry Oatmeal')
