@@ -77,4 +77,6 @@ option = st.selectbox(
     'What fruit would you lie to add?',
     list(my_data_row))
 
-st.write('You selected:', option)
+st.write('Thanks for adding:', option)
+
+my_cur.execute("insert into FRUIT_LOAD_LIST values ('from streamlit')")
