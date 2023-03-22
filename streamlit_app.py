@@ -30,10 +30,7 @@ st.header("Fruityvice Fruit Advice!")
 fruit_choice = st.text_input('what fruits would you like information about?')
 st.write ('The user entered', fruit_choice)
 
-def read_api(value:str):
-  return req.get(f"https://fruityvice.com/api/fruit/{value}")
-
-fruityvice_response = read_api('kiwi')
+fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_choice )
 
 ##fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
 
