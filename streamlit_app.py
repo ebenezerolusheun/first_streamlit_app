@@ -4,8 +4,6 @@ import requests as req
 import snowflake.connector
 from urllib.error import URLError
 
-
-
 st.title('My Parents New Healthy Diner')
 
 st.header('Breakfast Favorites')
@@ -14,27 +12,23 @@ st.text('🥗 Kale, Spinach & Rocket Smoothie')
 st.text('🐔 Hard-Boiled Free-Range Egg')
 st.text('🥑🍞 Avocado Toast')
 
-
 st.header('🍌🥭 Build Your Own Fruit Smoothie 🥝🍇')
 
 ## using pandas to read data from the S3 bucket 
 my_fruits_list = pd.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/dabw/fruit_macros.txt")
-
-
-
 my_fruit_list = my_fruits_list.set_index('Fruit')
 
 ## Let's put a pick list here so they can pick the fruit they want to include
 fruits_selected = st.multiselect("Pick some fruits:", list(my_fruit_list.index),['Avocado','Strawberries'])
-
 fruits_to_show = my_fruit_list.loc[fruits_selected]
 
 ## Display the table on the page
 st.dataframe(fruits_to_show)
 
 ## New Section to display fruityvice api response
-
 st.header("Fruityvice Fruit Advice!") 
+fruit_choice = st.text_input('what fruits would you like information about?
+st.write ('The user entered', fruit_choice)
 
 def read_api(value:str):
   return req.get(f"https://fruityvice.com/api/fruit/{value}")
