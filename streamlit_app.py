@@ -52,6 +52,8 @@ fruityvice_normalized = pd.json_normalize(fruityvice_response.json())
 # Let streamlite to display the object as dataframe
 st.dataframe(fruityvice_normalized)
 
+st.stop()
+
 my_cnx = snowflake.connector.connect(**st.secrets["snowflake"])
 my_cur = my_cnx.cursor()
 ##my_cur.execute("SELECT CURRENT_USER(), CURRENT_ACCOUNT(), CURRENT_REGION()")
@@ -82,4 +84,4 @@ st.write('Thanks for adding:', option)
 
 my_cur.execute("insert into FRUIT_LOAD_LIST values ('from streamlit')")
 
-st.stop()
+
