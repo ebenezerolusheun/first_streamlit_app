@@ -27,7 +27,7 @@ st.dataframe(fruits_to_show)
 
 ## New Section to display fruityvice api response
 st.header("Fruityvice Fruit Advice!") 
-fruit_choice = st.text_input('what fruits would you like information about?
+fruit_choice = st.text_input('what fruits would you like information about?')
 st.write ('The user entered', fruit_choice)
 
 def read_api(value:str):
