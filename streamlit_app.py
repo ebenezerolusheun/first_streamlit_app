@@ -45,7 +45,7 @@ try:
         st.dataframe(back_from_function)
 
 
-'''
+"""
 try:
     fruit_choice = st.text_input('what fruits would you like information about?')
     if not fruit_choice:
@@ -59,7 +59,7 @@ try:
 except URLError as e:
     st.error()
         
-'''
+"""
 
 
 
