@@ -26,7 +26,27 @@ fruits_to_show = my_fruit_list.loc[fruits_selected]
 st.dataframe(fruits_to_show)
 
 ## New Section to display fruityvice api response
+
+def get_fruityvice_data(this_fruit_choice):
+    fruityvice_response = req.get("https://fruityvice.com/api/fruit/" + this_fruit_choice )
+    # To Flattening a simple JSON into a dataframe 
+    fruityvice_normalized = pd.json_normalize(fruityvice_response.json())
+    return fruityvice_normalized
+
 st.header("Fruityvice Fruit Advice!") 
+
+try:
+    fruit_choice = st.text_input('what fruits would you like information about?')
+    if not fruit_choice:
+        st.error("Please select a fruit to get information.")
+    else:
+        back_from_function = get_fruityvice_data(fruit_choice)
+        # Let streamlite to display the object as dataframe
+        st.dataframe(back_from_function)
+except URLError as e:
+    st.error()
+
+'''
 try:
     fruit_choice = st.text_input('what fruits would you like information about?')
     if not fruit_choice:
@@ -40,7 +60,7 @@ try:
 except URLError as e:
     st.error()
         
-
+'''
 
 
 
