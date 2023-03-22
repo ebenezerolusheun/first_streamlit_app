@@ -69,3 +69,6 @@ st.header("The fruit load list contains:")
 ##st.text(my_data_row)
 st.dataframe(my_data_row)
 
+st.text("What fruit would you lie to add?")
+add_my_fruit = 'banana'
+st.text(f"Thanks for adding {add_my_fruit}")
