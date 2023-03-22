@@ -58,10 +58,36 @@ try:
   ##  st.error()
 
 ##fruityvice_response = req.get("https://fruityvice.com/api/fruit/watermelon")
-
-
 ##streamlit.text(fruityvice_response.json())
 
+st.stop()
+
+my_cnx = snowflake.connector.connect(**st.secrets["snowflake"])
+my_cur = my_cnx.cursor()
+##my_cur.execute("SELECT CURRENT_USER(), CURRENT_ACCOUNT(), CURRENT_REGION()")
+my_cur.execute("SELECT * from fruit_load_list")
 
 
+# To fetch just ine line
+##my_data_row = my_cur.fetchone()
 
+# To fetch all rows
+my_data_row = my_cur.fetchall()
+
+## st.text("The fruit load list contains:")
+st.header("The fruit load list contains:")
+
+##st.text(my_data_row)
+st.dataframe(my_data_row)
+
+st.text("What fruit would you lie to add?")
+add_my_fruit = 'banana'
+st.text(f"Thanks for adding {add_my_fruit}")
+
+option = st.selectbox(
+    'What fruit would you lie to add?',
+    list(my_data_row))
+
+st.write('Thanks for adding:', option)
+
+my_cur.execute("insert into FRUIT_LOAD_LIST values ('from streamlit')")
