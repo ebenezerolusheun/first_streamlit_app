@@ -43,8 +43,7 @@ try:
         back_from_function = get_fruityvice_data(fruit_choice)
         # Let streamlite to display the object as dataframe
         st.dataframe(back_from_function)
-except URLError as e:
-    st.error()
+
 
 '''
 try:
