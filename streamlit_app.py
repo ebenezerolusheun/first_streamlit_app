@@ -1,7 +1,8 @@
 import streamlit as st
-import pandas as pd
-import requests as req
+#import pandas as pd
+#import requests as req
 import snowflake.connector
+from urllib.error import URLError
 
 
 
@@ -80,3 +81,5 @@ option = st.selectbox(
 st.write('Thanks for adding:', option)
 
 my_cur.execute("insert into FRUIT_LOAD_LIST values ('from streamlit')")
+
+st.stop()
